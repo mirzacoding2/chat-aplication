@@ -3,22 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class OuthModel extends CI_Model {
 
-  	public function __construct()
-        {
-                parent::__construct();
-                // Your own constructor code
-        }
-	
+	public function __construct()
+    {
+        parent::__construct();
+        // Your own constructor code
+	}
+
 	private $User = 'users';
-	
 
 	public function xss_clean($data)
 	{  
 		return $this->security->xss_clean($data);
- 	}
- 
+	}
 	
- 	public function CSRFVerify()
+	public function CSRFVerify()
 	{ 
 		error_reporting(0);
 		$headers = apache_request_headers();
@@ -31,18 +29,20 @@ class OuthModel extends CI_Model {
 			echo json_encode([ 'code' => 400, 'error' => 'Bad request ,Unknown User!' ]);
 			die;
 		}
- 	}
+	}
+	 
 	public function Encrypt($string) {
 		$cryptKey  = ":jC!a-rfc9GFEg^7(*6NDGhrH?V!+gzYb|tS+-&}M!onG9=#],p3= kMu|5+tFmy";
 		$qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $string, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
 		return( $qEncoded );
-	}
+	} // disini merah
 
 	public function Decrypt($string){
 		$cryptKey  = ":jC!a-rfc9GFEg^7(*6NDGhrH?V!+gzYb|tS+-&}M!onG9=#],p3= kMu|5+tFmy";
 		$qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $string ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
 		return( $qDecoded );
-	}
+	}//disini merah
+
 	public function Encryptor($action, $string) {
 		$output = false;
 	
@@ -104,13 +104,14 @@ class OuthModel extends CI_Model {
 	
 	public function HashPassword($password)
 	{  
-		$options = array("cost"=>12,'salt'=>'G#&eW*<K}_iIlx5>^RrY5{nAiR;8+JiFhSzoJZMB^W:vU2}`@8xb6%pU-5p_:MYp');
-		$hashPassword = password_hash($password,PASSWORD_BCRYPT,$options);
+		$options = 'G#&eW*<K}_iIlx5>^RrY5{nAiR;8+JiFhSzoJZMB^W:vU2}`@8xb6%pU-5p_:MYp';
+		$hashPassword = password_hash($password,$options);
 		return $hashPassword;
  	}
 	public function VerifyPassword($password,$hash){
 		return password_verify($password,$hash);
 	}
- 	
+	
+}
 
- }
+?>

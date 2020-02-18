@@ -6,12 +6,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class UserController extends CI_Controller {
 
- 
-
- 
-
- 
-
+	public function __construct()
+        {
+                parent::__construct();
+                $this->load->model(['UserModel']);
+                $this->load->model(['OuthModel']);
+                 
+		}
+		
  public function userlogin(){
 
 		
@@ -150,17 +152,14 @@ class UserController extends CI_Controller {
 
 		
 
-		$this->OuthModel->CSRFVerifyLogin();
+		// $this->OuthModel->CSRFVerifyLogin();
 
-		
-
- 		 
 
 		$this->form_validation->set_rules('fullname', 'Name', 'required');
 
 		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
 
- 		$this->form_validation->set_rules('mobile', 'Address', 'required');
+ 		// $this->form_validation->set_rules('mobile', 'Address', 'required');
 
 		$this->form_validation->set_rules('password', 'password', 'required');
 
@@ -186,25 +185,21 @@ class UserController extends CI_Controller {
 
 				$post = $this->input->post();
 
- 				 
-
-					
-
 						$user_data = [ 	
 
 									'name' => $post['fullname'],
 
-									'username' => $post['email'],
+									'username' => $post['username'],
 
 									'password' => $this->OuthModel->HashPassword($post['password']),
 
-									'role' => 'User',
+									'role' => 'Client_cs',
 
 									'source' => 1,
 
 									'email' => $post['email'],
 
-									'mobile_no' => $post['mobile'],
+									// 'mobile_no' => $post['mobile'],
 
  									'ip_address' => $this->input->ip_address(),
 
@@ -225,11 +220,11 @@ class UserController extends CI_Controller {
 						echo json_encode(['status' => 0 ,'message' => "Faild to registerd, Please try again !"]);
 
 					}
-
+				
 		 }
 
  		
-
+		 $this->load->view('DashboardController/index');
  	}
 
 	

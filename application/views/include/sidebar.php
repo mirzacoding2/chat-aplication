@@ -35,6 +35,7 @@
           <li class="<?php if($uri=='vendor/list'){ echo 'active';}?>"> <a href="<?=base_url('vendor/list');?>"><i class="fa fa-list"></i>List</a></li>
         </ul>
       </li>
+      <li class="<?php if($uri=='vendor/list'){ echo 'active';}?>"><a href="<?=base_url('AddUsers/index');?>"><i class="fa fa-users"></i> <span>Tambah Client</span></a></li>
        
  
       <?php

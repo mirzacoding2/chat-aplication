@@ -54,7 +54,7 @@
         <div class="col-xs-12">
         
          <div class="col-xs-12">
-        	 <table class="table table-striped">
+        	 <!-- <table class="table table-striped">
              	<tr>
                 	<th>Username</th>
                     <th>Role</th>
@@ -86,7 +86,7 @@
                     <td>123456</td>
                 </tr>
                 
-             </table>
+             </table> -->
          </div>
           
          
