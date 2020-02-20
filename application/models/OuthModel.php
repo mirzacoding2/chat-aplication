@@ -104,8 +104,9 @@ class OuthModel extends CI_Model {
 	
 	public function HashPassword($password)
 	{  
-		$options = 'G#&eW*<K}_iIlx5>^RrY5{nAiR;8+JiFhSzoJZMB^W:vU2}`@8xb6%pU-5p_:MYp';
-		$hashPassword = password_hash($password,$options);
+
+		// $options = 'G#&eW*<K}_iIlx5>^RrY5{nAiR;8+JiFhSzoJZMB^W:vU2}`@8xb6%pU-5p_:MYp';
+		$hashPassword = password_hash($password,PASSWORD_BCRYPT);
 		return $hashPassword;
  	}
 	public function VerifyPassword($password,$hash){

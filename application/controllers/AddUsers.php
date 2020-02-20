@@ -47,14 +47,14 @@ class AddUsers extends CI_Controller {
 			 
 
 				$post = $this->input->post();
-
+				$password = $this->input->post('password');
 						$user_data = [ 	
 
 									'name' => $post['fullname'],
 
 									'username' => $post['username'],
 
-									'password' => $this->OuthModel->HashPassword($post['password']),
+									'password' => $this->OuthModel->HashPassword($password),
 
 									'role' => 'Client_cs',
 
@@ -73,16 +73,17 @@ class AddUsers extends CI_Controller {
 					$create_member = $this->UserModel->AddMember($this->OuthModel->xss_clean($user_data));
 
 					
-
 					if($create_member == true){
 
-						echo json_encode(['status' => 1 ,'message' => "Your are registerd successfully !"]);
+						echo ("Your are registerd successfully !");
 
 					}else{
 
-						echo json_encode(['status' => 0 ,'message' => "Faild to registerd, Please try again !"]);
+						echo ("Faild to registerd, Please try again !");
 
 					}
+
+					
 				
 		}
 
