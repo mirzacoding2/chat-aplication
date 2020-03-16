@@ -72,7 +72,7 @@
                             <tr>
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $row->attachment_name ?></td>
-                                <td><a href="<?php echo base_url().'BankController/get_download'.$row->id; ?>">Download</a></td>
+                                <td><a href="<?php echo base_url().'BankController/get_download/'.$row->id; ?>">Download</a></td>
                             </tr>
                       <?php
                         }
