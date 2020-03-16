@@ -7,6 +7,9 @@
             return $query->result();
         }
 
-       
+        public function download($id){
+            $query = $this->db->get_where('chat',array('id'=>$id));
+            return $query->row_array();
+        }
     }
 ?>

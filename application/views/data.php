@@ -57,8 +57,10 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <!-- <th>ID</th> -->
                   <th>No</th>
                   <th>File</th>
+                  <th>Option</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -69,7 +71,8 @@
                             
                             <tr>
                                 <td><?php echo $no++ ?></td>
-                                <td><?php echo $row->file_ext ?></td>
+                                <td><?php echo $row->attachment_name ?></td>
+                                <td><a href="<?php echo base_url().'BankController/get_download'.$row->id; ?>">Download</a></td>
                             </tr>
                       <?php
                         }

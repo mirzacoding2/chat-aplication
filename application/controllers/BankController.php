@@ -16,7 +16,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->view('data', $data);
         }
 
-        
+        public function get_download($id){ 
+            $this->load->helper('download');
+            $fileinfo = $this->BankModel->download($id);
+            $file = 'uploads/attachment/'.$fileinfo['attachment_name'];
+            force_download($file, NULL);
+            redirect("BankController/index");
+        }
 
         
     }
