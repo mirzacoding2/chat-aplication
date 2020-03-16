@@ -45,12 +45,13 @@
  
 	
 	
-       <?php $invoiceuri=$this->uri->segment(3);?>
+    <?php $invoiceuri=$this->uri->segment(3);?>
    
+      <li class="<?php if($uri=='vendor/list'){ echo 'active';}?>"><a href="<?=base_url('BankController/index');?>"><i class="fa fa-copy"></i> <span>Bank Data</span></a></li>
       
       <li class="<?php if($this->uri->segment(1)=='chat'){ echo 'active';}?>"> <a href="<?=base_url('chat');?>"> 
       <i class="fa fa fa-comment"></i> <span>Chat</span> 
-     </a>
+      </a>
          
       </li>
       
