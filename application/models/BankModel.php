@@ -3,7 +3,8 @@
     {
         function ambil_data(){
             $this->db->order_by('attachment_name', 'desc');
-            $query = $this->db->get('chat');
+            $where = "attachment_name is  NOT NULL AND attachment_name !='' ";
+            $query = $this->db->get_where('chat', $where);
             return $query->result();
         }
 
